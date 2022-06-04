@@ -1,0 +1,352 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <locale.h>
+
+//função de milhões
+void totalnum (int valor, char *total){
+    int mm, mi, cen;
+    char milha [60], mil [60], cent [60];
+    strcpy (milha, "");
+    strcpy (mil, "");
+    strcpy (cent, "");
+    mm = valor / 1000000;
+    if (mm>0){
+        numeroextenso(mm, milha);
+        strcat(total, milha);
+        if (mm == 1){
+            strcat(total, " milhão ");
+        }
+        else{
+            strcat (total, " milhões ");
+        }
+    }
+    mi = ((valor % 1000000)/1000);
+    if (mi>0){
+        numeroextenso(mi, mil);
+        strcat(total, mil);
+        strcat (total, " mil ");
+    }
+    cen = ((valor % 1000000) % 1000);
+    if (cen>0){
+        numeroextenso(cen, cent);
+        strcat(total, cent);
+    }
+}
+
+//função de centenas
+void numeroextenso (int valor, char *nue){
+    int c,d,u;
+    char centena [20], dezena[20], unidade[20];
+    strcpy(centena, "");
+    strcpy(dezena, "");
+    strcpy(unidade, "");
+        c = valor / 100;
+        d =((valor % 100) / 10);
+        u = ((valor % 100) % 10);
+
+    switch (c)
+    {
+    case 1:
+    {
+        if ((d==0) && (u==0))
+        {
+            strcpy (centena, "cem");
+        }
+        else
+        {
+            strcpy (centena, "cento e ");
+        }
+    }
+    break;
+    case 2:
+    {
+        if ((d==0) && (u==0))
+        {
+            strcpy (centena, "duzentos ");
+        }
+        else
+        {
+            strcpy (centena, "duzentos e ");
+        }
+    }
+    break;
+    case 3:
+    {
+        if ((d==0) && (u==0))
+        {
+            strcpy (centena, "trezentos ");
+        }
+        else
+        {
+            strcpy (centena, "trezentos e ");
+        }
+    }
+    break;
+    case 4:
+    {
+        if ((d==0) && (u==0))
+        {
+            strcpy (centena, "quatrocentos ");
+        }
+        else
+        {
+            strcpy (centena, "quatrocentos e ");
+        }
+    }
+    break;
+    case 5:
+    {
+        if ((d==0) && (u==0))
+        {
+            strcpy (centena, "quinhentos ");
+        }
+        else
+        {
+            strcpy (centena, "quinhentos e ");
+        }
+    }
+    break;
+    case 6:
+    {
+        if ((d==0) && (u==0))
+        {
+            strcpy (centena, "seiscentos ");
+        }
+        else
+        {
+            strcpy (centena, "seiscentos e ");
+        }
+    }
+    break;
+    case 7:
+    {
+        if ((d==0) && (u==0))
+        {
+            strcpy (centena, "setecentos ");
+        }
+        else
+        {
+            strcpy (centena, "setecentos e ");
+        }
+    }
+    break;
+    case 8:
+    {
+        if ((d==0) && (u==0))
+        {
+            strcpy (centena, "oitocentos ");
+        }
+        else
+        {
+            strcpy (centena, "oitocentos e ");
+        }
+    }
+    break;
+    case 9:
+    {
+        if ((d==0) && (u==0))
+        {
+            strcpy (centena, "novecentos ");
+        }
+        else
+        {
+            strcpy (centena, "novecentos e ");
+        }
+    }
+    break;
+    }
+
+    switch (d)
+    {
+    case 2:
+    {
+        if (u==0)
+        {
+            strcpy (dezena, "vinte ");
+        }
+        else
+        {
+            strcpy (dezena, "vinte e ");
+        }
+    }
+    break;
+    case 3:
+    {
+        if (u==0)
+        {
+            strcpy (dezena, "trinta ");
+        }
+        else
+        {
+            strcpy (dezena, "trinta e ");
+        }
+    }
+    break;
+    case 4:
+    {
+        if (u==0)
+        {
+            strcpy (dezena, "quarenta ");
+        }
+        else
+        {
+            strcpy (dezena, "quarenta e ");
+        }
+    }
+    break;
+    case 5:
+    {
+        if (u==0)
+        {
+            strcpy (dezena, "cinquenta ");
+        }
+        else
+        {
+            strcpy (dezena, "cinquenta e ");
+        }
+    }
+    break;
+    case 6:
+    {
+        if (u==0)
+        {
+            strcpy (dezena, "sessenta ");
+        }
+        else
+        {
+            strcpy (dezena, "sessenta e ");
+        }
+    }
+    break;
+    case 7:
+    {
+        if (u==0)
+        {
+            strcpy (dezena, "setenta ");
+        }
+        else
+        {
+            strcpy (dezena, "setenta e ");
+        }
+    }
+    break;
+    case 8:
+    {
+        if (u==0)
+        {
+            strcpy (dezena, "oitenta ");
+        }
+        else
+        {
+            strcpy (dezena, "oitenta e ");
+        }
+    }
+    break;
+    case 9:
+    {
+        if (u==0)
+        {
+            strcpy (dezena, "noventa ");
+        }
+        else
+        {
+            strcpy (dezena, "noventa e ");
+        }
+    }
+    break;
+    case 1:
+    {
+        if (u==0)
+            strcpy (dezena, "dez");
+        if (u==1)
+            strcpy (dezena, "onze");
+        if (u==2)
+            strcpy (dezena, "doze");
+        if (u==3)
+            strcpy (dezena, "treze");
+        if (u==4)
+            strcpy (dezena, "catorze");
+        if (u==5)
+            strcpy (dezena, "quinze");
+        if (u==6)
+            strcpy (dezena, "dezesseis");
+        if (u==7)
+            strcpy (dezena, "dezesete");
+        if (u==8)
+            strcpy (dezena, "dezoito");
+        if (u==9)
+            strcpy (dezena, "dezenove");
+    }
+    break;
+    }
+
+    if (d!=1)
+    {
+        switch (u)
+        {
+        case 1:
+        {
+            strcpy(unidade, "um");
+        }
+        break;
+        case 2:
+        {
+            strcpy(unidade, "dois");
+        }
+        break;
+        case 3:
+        {
+            strcpy(unidade, "três");
+        }
+        break;
+        case 4:
+        {
+            strcpy(unidade, "quatro");
+        }
+        break;
+        case 5:
+        {
+            strcpy(unidade, "cinco");
+        }
+        break;
+        case 6:
+        {
+            strcpy(unidade, "seis");
+        }
+        break;
+        case 7:
+        {
+            strcpy(unidade, "sete");
+        }
+        break;
+        case 8:
+        {
+            strcpy(unidade, "oito");
+        }
+        break;
+        case 9:
+        {
+            strcpy(unidade, "nove");
+        }
+        break;
+        }
+    }
+    strcat(nue, centena);
+    strcat(nue, dezena);
+    strcat(nue, unidade);
+
+}
+main ()
+{
+    setlocale(LC_ALL,"Portuguese");
+    int valor, c,d,u;
+    char nxt[500];
+    strcpy(nxt, "");
+    printf("Digite o valor entre 0 e 999.999.999: ");
+    scanf("%i", &valor);
+    getchar();
+
+    totalnum(valor, nxt);
+    printf("numero extenso: %s",nxt);
+}
